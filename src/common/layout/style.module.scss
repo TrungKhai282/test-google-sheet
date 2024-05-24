@@ -1,0 +1,330 @@
+@import "@/common/styles/common.scss";
+
+.layout {
+  position: relative;
+  padding-top: $height_navbar;
+
+  @include Responsive(LG) {
+    flex-wrap: wrap;
+    padding-top: $height_navbar_LG;
+  }
+
+  @include Responsive(LG) {
+    flex-wrap: wrap;
+    padding-top: $height_navbar_SM;
+  }
+
+  @include Responsive(XS) {
+    padding-top: $height_navbar;
+  }
+}
+
+.header {
+  display: flex;
+  height: $height_navbar;
+  padding: 0 48px;
+  width: calc(100% - 96px);
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgba(20, 59, 54, 0.63);
+  backdrop-filter: blur(12px);
+
+  @include Responsive(LG) {
+    height: $height_navbar_LG;
+    padding: 0;
+    width: 100%;
+  }
+
+  @include Responsive(SM) {
+    height: $height_navbar_SM;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .logo {
+    display: flex;
+    cursor: pointer;
+
+    @include Responsive(LG) {
+      padding-left: 24px;
+
+      img {
+        width: 100px;
+        height: auto;
+      }
+    }
+  }
+
+  .menu {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    @include Responsive(LG) {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .mobileMenuIcon {
+      display: none;
+      padding: 8px;
+      background: none;
+      border: 0;
+      margin: 0 32px;
+      position: relative;
+
+      @include Responsive(LG) {
+        display: flex;
+      }
+
+      @include Responsive(SM) {
+        margin: 0;
+        padding: 8px 24px;
+      }
+
+      svg {
+        width: 24px;
+        height: 24px;
+
+        path {
+          color: white;
+        }
+      }
+
+      &:hover {
+        svg {
+          path {
+            color: #d69c52;
+          }
+        }
+      }
+
+      &::after {
+        content: "";
+        background-color: rgba(255, 255, 255, 0.495);
+        width: 1px;
+        height: 12px;
+        position: absolute;
+        right: -12px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    .list:has(+ .mobileMenuIcon:hover) {
+      display: flex;
+    }
+
+    .list {
+      width: fit-content;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+
+      &:hover {
+        display: flex;
+      }
+
+      @include Responsive(LG) {
+        display: none;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.85);
+        flex-direction: column;
+        padding: 16px;
+        top: 100%;
+        right: 0;
+        border-radius: 8px;
+        z-index: 4;
+      }
+
+      .item {
+        font-weight: normal;
+        font-size: 16px;
+        a {
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .actionHeader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include Responsive(LG) {
+      padding-right: 24px;
+    }
+
+    @include Responsive(SM) {
+      width: 100%;
+      justify-content: space-between;
+      padding: 0 24px 8px 24px;
+    }
+
+    .iconItem {
+      cursor: pointer;
+      display: flex;
+      position: relative;
+
+      svg {
+        width: 24;
+        height: 24px;
+
+        path {
+          color: white;
+        }
+      }
+
+      &:hover {
+        svg {
+          path {
+            color: #d69c52;
+          }
+        }
+      }
+
+      .prefix {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: white;
+        border-radius: 10px;
+        min-width: 16px;
+        height: 16px;
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        padding: 2px;
+      }
+    }
+
+    .buttonItem {
+      display: flex;
+      button {
+        cursor: pointer;
+        background: #d69c52;
+        border: none;
+        border-radius: 8px;
+        height: 34px;
+        padding: 8px 16px;
+        font-size: 16px;
+        color: white;
+        font-weight: 500;
+
+        @include Responsive(SM) {
+          font-size: 14px;
+        }
+
+        @include Responsive(XS) {
+          font-size: 12px;
+        }
+
+        &:hover {
+          background: #b1762a;
+        }
+      }
+    }
+  }
+}
+
+.menuSM {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  background-color: white;
+  backdrop-filter: blur(12px);
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  overflow-x: auto;
+
+  @include Responsive(SM) {
+    display: flex;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .item {
+    font-weight: normal;
+    font-size: 12px;
+    text-align: center;
+    position: relative;
+    padding: 18px 12px;
+    text-wrap: nowrap;
+    a {
+      color: #143b36;
+      text-decoration: none;
+    }
+  }
+}
+
+.loadingAllPage {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000074;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  backdrop-filter: blur(22px);
+
+  @include Responsive(SM) {
+    align-items: center;
+  }
+
+  .content {
+    margin-top: 20%;
+
+    @include Responsive(SM) {
+      margin-top: 0;
+    }
+
+    span {
+      font-family: $font_dancing;
+      font-size: 55px;
+      font-weight: 500;
+
+      @include Responsive(SM) {
+        display: block;
+        max-width: 240px;
+        text-align: center;
+      }
+    }
+
+    .loader {
+      margin-top: 20px;
+      height: 2px;
+      width: 100%;
+      --c: no-repeat linear-gradient(#d69c52 0 0);
+      background: var(--c), var(--c), rgba(255, 255, 255, 0.219);
+      background-size: 60% 100%;
+      animation: l16 3s infinite;
+    }
+    @keyframes l16 {
+      0% {
+        background-position: -150% 0, -150% 0;
+      }
+      66% {
+        background-position: 250% 0, -150% 0;
+      }
+      100% {
+        background-position: 250% 0, 250% 0;
+      }
+    }
+  }
+}

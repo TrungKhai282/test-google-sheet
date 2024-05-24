@@ -1,0 +1,338 @@
+@import "@/common/styles/common.scss";
+
+.screen {
+  margin-top: calc(0px - $height_navbar);
+
+  @include Responsive(LG) {
+    margin-top: calc(0px - $height_navbar_LG);
+  }
+
+  @include Responsive(LG) {
+    margin-top: calc(0px - $height_navbar_SM);
+  }
+
+  @include Responsive(XS) {
+    margin-top: calc(0px - $height_navbar);
+  }
+
+  .homeBanner {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+
+    @include Responsive(MD) {
+      display: flex;
+      align-items: center;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+
+      @include Responsive(MD) {
+        height: 500px;
+        width: auto;
+        min-width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+
+      .title {
+        font-family: $font_dancing;
+        font-size: 56px;
+        text-wrap: nowrap;
+
+        @include Responsive(SM) {
+          font-size: 48px;
+        }
+
+        @include Responsive(XS) {
+          font-size: 36px;
+        }
+      }
+
+      .description {
+        font-size: 20px;
+        margin-bottom: 18px;
+        font-weight: normal;
+
+        @include Responsive(SM) {
+          font-size: 16px;
+        }
+
+        @include Responsive(XS) {
+          font-size: 14px;
+        }
+      }
+
+      .action {
+        .booking {
+          cursor: pointer;
+          background: #d69c52;
+          border: none;
+          border-radius: 8px;
+          height: 34px;
+          padding: 8px 16px;
+          font-size: 16px;
+          color: white;
+          font-weight: 500;
+          text-decoration: none;
+
+          @include Responsive(SM) {
+            font-size: 14px;
+          }
+
+          @include Responsive(XS) {
+            font-size: 12px;
+          }
+
+          &:hover {
+            background: #b1762a;
+          }
+        }
+      }
+    }
+  }
+
+  .about {
+    display: flex;
+    padding: 24px 48px;
+    gap: 16px;
+    justify-content: space-between;
+
+    @include Responsive(LG) {
+      padding: 24px;
+    }
+
+    @include Responsive(SM) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .left {
+      flex: 1;
+      padding-top: 40px;
+
+      @include Responsive(MD) {
+        padding-top: 30px;
+      }
+      .title {
+        color: #d69c52;
+        font-size: 18px;
+        margin-bottom: 16px;
+
+        @include Responsive(MD) {
+          font-size: 16px;
+        }
+      }
+
+      .brandName {
+        font-family: $font_dancing;
+        font-size: 40px;
+        margin-bottom: 16px;
+
+        @include Responsive(MD) {
+          font-size: 28px;
+        }
+      }
+
+      .description {
+        font-size: 16px;
+
+        @include Responsive(MD) {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .right {
+      width: 50%;
+
+      @include Responsive(SM) {
+        width: 100%;
+      }
+
+      .image {
+        width: 100%;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .featureCategory {
+    padding: 48px;
+    background-color: #10302c;
+
+    @include Responsive(LG) {
+      padding: 24px;
+    }
+    .title {
+      font-size: 28px;
+      text-align: center;
+      color: #d69c52;
+
+      @include Responsive(MD) {
+        font-size: 24px;
+      }
+
+      @include Responsive(SM) {
+        font-size: 20px;
+      }
+    }
+
+    .list {
+      display: flex;
+      padding-top: 24px;
+      gap: 16px;
+
+      @include Responsive(MD) {
+        flex-wrap: wrap;
+      }
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: calc((100% - 16px * 3) / 4 - 2px);
+        padding: 24px 0;
+        border: 1px solid white;
+        gap: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        color: white;
+        text-decoration: none;
+
+        @include Responsive(MD) {
+          width: calc((100% - 16px * 1) / 2 - 2px);
+        }
+
+        @include Responsive(SM) {
+          padding: 12px 0;
+          gap: 12px;
+        }
+
+        .image {
+          width: 50%;
+
+          @include Responsive(SM) {
+            width: calc(100% - 12px * 2);
+          }
+
+          img {
+            width: 100%;
+          }
+        }
+
+        .name {
+          font-size: 18px;
+
+          @include Responsive(SM) {
+            font-size: 14px;
+            font-weight: 500;
+          }
+        }
+
+        .description {
+          width: 70%;
+          text-align: center;
+
+          @include Responsive(SM) {
+            width: calc(100% - 12px * 2);
+          }
+        }
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.2);
+        }
+      }
+    }
+  }
+
+  .weHave {
+    display: flex;
+    justify-content: space-between;
+    padding: 48px;
+
+    @include Responsive(LG) {
+      padding: 48px 24px;
+    }
+
+    @include Responsive(MD) {
+      flex-wrap: wrap;
+    }
+
+    .item {
+      width: 24%;
+
+      @include Responsive(MD) {
+        width: 48%;
+        margin-top: 48px;
+      }
+
+      .image {
+        width: 100%;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        margin-top: 16px;
+
+        .left {
+          width: 20%;
+          svg {
+            width: 100%;
+            height: auto;
+
+            path {
+              color: #d69c52;
+            }
+          }
+        }
+
+        .right {
+          line-height: 35px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          p {
+            font-size: 40px;
+            margin: 0;
+
+            @include Responsive(SM) {
+              font-size: 28px;
+            }
+          }
+
+          span {
+            font-size: 20px;
+
+            @include Responsive(SM) {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

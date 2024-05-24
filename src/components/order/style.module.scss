@@ -1,0 +1,200 @@
+@import "@/common/styles/common.scss";
+
+.screen {
+  padding: 32px 48px;
+  min-height: calc(100vh - 160px);
+
+  @include Responsive(SM) {
+    padding: 32px 24px;
+  }
+
+  .title {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .productList {
+    width: calc(100% - 32px);
+    background-color: white;
+    padding: 16px;
+    margin-top: 32px;
+
+    .tableHeader {
+      display: flex;
+      color: white;
+      background-color: black;
+
+      div {
+        padding: 8px;
+        &:nth-child(1) {
+          width: 40%;
+        }
+        &:nth-child(2) {
+          width: 20%;
+          text-align: end;
+        }
+        &:nth-child(3) {
+          width: 20%;
+          text-align: center;
+        }
+        &:nth-child(4) {
+          width: 20%;
+          text-align: end;
+        }
+      }
+    }
+
+    .tableBody {
+      .item {
+        display: flex;
+        color: black;
+        margin-top: 12px;
+        align-items: center;
+        position: relative;
+        border-bottom: 1px solid lightgray;
+
+        div {
+          padding: 8px;
+          &:nth-child(1) {
+            width: 40%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+          }
+          &:nth-child(2) {
+            width: 20%;
+            text-align: end;
+          }
+          &:nth-child(3) {
+            width: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          &:nth-child(4) {
+            width: 20%;
+            text-align: end;
+            color: red;
+          }
+
+          .image {
+            width: 100px;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 0;
+
+            img {
+              width: 100%;
+              height: auto;
+            }
+          }
+
+          .name {
+            font-size: 14px;
+            flex: 1;
+          }
+
+          .plus,
+          .minus {
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+
+            svg {
+              width: 22px;
+              height: 22px;
+            }
+          }
+
+          .plus {
+            margin-left: 12px;
+          }
+          .minus {
+            margin-right: 12px;
+          }
+
+          .quantity {
+            border: none;
+            width: 22px;
+            text-align: center;
+            font-size: 14px;
+            &::-webkit-inner-spin-button {
+              /* display: none; <- Crashes Chrome on hover */
+              -webkit-appearance: none;
+              margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .infomation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+
+    @include Responsive(SM) {
+      flex-direction: column;
+    }
+
+    .payment {
+      background-color: white;
+      width: calc(40% - 48px);
+      color: black;
+      padding: 48px 24px;
+
+      @include Responsive(SM) {
+        width: calc(100% - 48px);
+      }
+
+      .totalPriceProduct,
+      .shippingPrice,
+      .totalAll {
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+        padding: 12px 0;
+        border-bottom: 1px dotted lightgray;
+        .label {
+          color: gray;
+        }
+      }
+
+      .totalPriceProduct {
+        padding: 0 0 12px 0;
+      }
+      .totalAll {
+        color: red;
+      }
+    }
+
+    .client {
+      background-color: white;
+      width: calc(58% - 48px);
+      color: black;
+      padding: 48px 24px;
+
+      @include Responsive(SM) {
+        width: calc(100% - 48px);
+        margin-top: 24px;
+      }
+
+      .item {
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+        padding: 12px 0;
+        border-bottom: 1px dotted lightgray;
+        .label {
+          color: gray;
+        }
+      }
+    }
+  }
+}

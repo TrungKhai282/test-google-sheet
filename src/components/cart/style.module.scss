@@ -1,0 +1,280 @@
+@import "@/common/styles/common.scss";
+
+.screen {
+  padding: 32px 48px;
+  min-height: calc(100vh - 160px);
+
+  @include Responsive(SM) {
+    padding: 32px 24px;
+  }
+
+  .title {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .nonItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 84px;
+
+    svg {
+      width: 80px;
+      height: 80px;
+      fill: white;
+    }
+  }
+
+  .cart {
+    display: flex;
+    margin-top: 24px;
+    gap: 2%;
+
+    @include Responsive(SM) {
+      flex-direction: column;
+    }
+
+    .productList {
+      width: 70%;
+      overflow-x: auto;
+
+      @include Responsive(SM) {
+        width: 100%;
+      }
+      .tableHeader {
+        display: flex;
+        min-width: 650px;
+
+        div {
+          padding: 8px;
+          &:nth-child(1) {
+            width: 40%;
+          }
+          &:nth-child(2) {
+            width: 20%;
+            text-align: end;
+          }
+          &:nth-child(3) {
+            width: 20%;
+            text-align: center;
+          }
+          &:nth-child(4) {
+            width: 20%;
+            text-align: end;
+          }
+        }
+      }
+
+      .tableBody {
+        min-width: 650px;
+        .item {
+          display: flex;
+          background-color: white;
+          color: black;
+          border-radius: 8px;
+          margin-top: 12px;
+          align-items: center;
+          position: relative;
+
+          .delete {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            border: none;
+            background: red;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+
+            &:hover {
+              background: rgb(200, 0, 0);
+            }
+
+            svg {
+              width: 14px;
+              height: 14px;
+
+              path {
+                color: white;
+              }
+            }
+          }
+
+          &:hover {
+            .delete {
+              display: flex;
+            }
+          }
+
+          div {
+            padding: 8px;
+            &:nth-child(1) {
+              width: 40%;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+            }
+            &:nth-child(2) {
+              width: 20%;
+              text-align: start;
+            }
+            &:nth-child(3) {
+              width: 20%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            &:nth-child(4) {
+              width: 20%;
+              text-align: end;
+              color: red;
+            }
+
+            .image {
+              width: 100px;
+              border-radius: 8px;
+              overflow: hidden;
+              display: flex;
+              align-items: center;
+              padding: 0;
+
+              img {
+                width: 100%;
+                height: auto;
+              }
+            }
+
+            .name {
+              font-size: 14px;
+              font-weight: 500;
+              flex: 1;
+            }
+
+            .plus,
+            .minus {
+              background: none;
+              border: none;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+
+              svg {
+                width: 22px;
+                height: 22px;
+              }
+            }
+
+            .plus {
+              margin-left: 12px;
+            }
+            .minus {
+              margin-right: 12px;
+            }
+
+            .quantity {
+              border: none;
+              width: 22px;
+              text-align: center;
+              font-size: 14px;
+              &::-webkit-inner-spin-button {
+                /* display: none; <- Crashes Chrome on hover */
+                -webkit-appearance: none;
+                margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .payment {
+      background-color: white;
+      width: 28%;
+      color: black;
+      border-radius: 8px;
+      padding: 48px 24px;
+      margin-top: 48px;
+      height: fit-content;
+
+      @include Responsive(SM) {
+        width: calc(100% - 48px);
+      }
+
+      .totalPriceProduct,
+      .shippingPrice,
+      .totalAll,
+      .note {
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+        padding: 12px 0;
+        border-bottom: 1px dotted lightgray;
+        .label {
+          color: gray;
+        }
+
+        .value {
+          font-weight: 500;
+        }
+      }
+
+      .totalPriceProduct {
+        padding: 0 0 12px 0;
+      }
+      .totalAll {
+        color: red;
+      }
+
+      .note {
+        flex-direction: column;
+
+        textarea {
+          margin-top: 12px;
+          width: calc(100% - 32px);
+          border-radius: 8px;
+          padding: 16px;
+        }
+      }
+
+      .action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 32px;
+
+        button {
+          border: none;
+          text-decoration: none;
+          font-size: 16px;
+          padding: 12px 12px;
+          border-radius: 8px;
+          font-weight: 400;
+          margin: 0;
+          background: none;
+          color: #143b36;
+          border: 1px solid #143b36;
+          transition: all 0.2s ease-in;
+          cursor: pointer;
+
+          &.order {
+            background: #d69c52;
+            border: 1px solid #d69c52;
+            color: white;
+
+            &:hover {
+              background: #b1762a;
+            }
+          }
+        }
+      }
+    }
+  }
+}
